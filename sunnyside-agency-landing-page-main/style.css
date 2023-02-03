@@ -89,8 +89,11 @@ body {
   font-weight: 700;
   color: var(--Dark-grayish-blue);
 }
+main {
+  background-color: var(--White);
+}
 img {
-  width: 100%;
+  max-width: 100%;
 }
 nav {
   cursor: pointer;
@@ -253,13 +256,13 @@ h1 {
   font-weight: 900;
   color: var(--White);
   letter-spacing: 0.1rem;
-  margin: 2rem auto 0px auto;
+  margin: 1.5rem auto 0px auto;
 }
-h1 span {
+/* h1 span {
   animation: jump 1s ease forwards infinite;
   animation-delay: calc(var(--order) * 200ms);
   transition: all 1s ease;
-}
+} */
 section {
   display: grid;
   grid-template-columns: 1fr;
@@ -330,6 +333,7 @@ a {
 }
 .section-4 img {
   width: 80px;
+  height: 80px !important;
   border-radius: 50%;
   height: fit-content;
 }
@@ -343,7 +347,7 @@ a {
   gap: 0.7rem;
 }
 .section-4 > div > blockquote {
-  max-width: 90%;
+  max-width: 80%;
   margin: 20px auto;
 }
 .sec4-content-2 {
@@ -464,13 +468,13 @@ footer img {
   section:has(.content) > p > picture > img {
     height: 100%;
   }
-  :is(.section-1, .section-2) p,
-  .content {
+  :is(.section-1, .section-2) :is(p, .content) {
     max-width: 100%;
     max-height: 100%;
     margin: 0px;
   }
-  :is(.section-1, .section-2) .content {
+  .section-1 .content,
+  .section-2 .content {
     gap: 0px;
     grid-row: 1/2;
     text-align: left;
