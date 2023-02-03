@@ -402,9 +402,9 @@ footer img {
   transition: all 4s ease;
 }
 .svg-animate {
-  stroke: #000;
+  stroke: rgb(255, 255, 75);
   stroke-dasharray: 20px;
-  stroke-width: 1.5px;
+  stroke-width: 2.5px;
   animation: stroke 2s ease forwards;
   transition: all 2s ease;
 }
