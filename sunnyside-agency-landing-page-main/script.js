@@ -36,32 +36,37 @@ overlay.addEventListener('click', function () {
   toggleHiddenClass(mobileNav);
   toggleHiddenClass(overlay);
 });
-const obsCallback = function (entries, observer) {
-  const [entry] = entries;
-  // if (!entry.isIntersecting) return;
-  console.log(entry.target);
-  if (entry.target.querySelector('.content-down') === NodeList) {
-    entry.target.querySelector('.content-down').classList.add('content-up');
-  } else {
-    entry.target
-      .querySelectorAll('.content-down')
-      .forEach(con => con.classList.add('content-up'));
-  }
-  // if (!entry.isIntersecting) {
-  //   entry.target.querySelector('.content-up').classList.add('content-down');
-  // }
-  // if (!entry.isIntersecting) {
-  // }
-};
+// I MIGHT NEED THIS LATER :)
+// const obsCallback = function (entries, observer) {
+//   const [entry] = entries;
+//   // if (!entry.isIntersecting) return;
+//   console.log(entry.target);
+//   if (entry.target.querySelector('.viewOnScroll') === NodeList) {
+//     entry.target.querySelector('.viewOnScroll').classList.add('content-up');
+//   } else {
+//     entry.target
+//       .querySelectorAll('.viewOnScroll')
+//       .forEach(con => con.classList.add('content-up'));
+//   }
+//   // if (!entry.isIntersecting) {
+//   //   entry.target.querySelector('.content-up').classList.add('viewOnScroll');
+//   // }
+//   // if (!entry.isIntersecting) {
+//   // }
+// };
+// const obsOptions = {
+//   root: null,
+//   threshold: 0.5,
+// };
+// const sectionObserver = new IntersectionObserver(obsCallback, obsOptions);
+// allSections.forEach(section => {
+//   sectionObserver.observe(section);
+// });
+
 const obsOptions = {
   root: null,
   threshold: 0.5,
 };
-const sectionObserver = new IntersectionObserver(obsCallback, obsOptions);
-allSections.forEach(section => {
-  sectionObserver.observe(section);
-});
-
 const footer = document.querySelector('footer');
 const footerObsCallback = function (entries, observer) {
   const [entry] = entries;
@@ -72,3 +77,26 @@ const footerObsCallback = function (entries, observer) {
 const footerObserver = new IntersectionObserver(footerObsCallback, obsOptions);
 
 footerObserver.observe(footer);
+
+const viewOnSCrollOptions = {
+  root: null,
+  threshold: 0.3,
+};
+const downCB = function (entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    if (!entry.target) return;
+    if (entry.isIntersecting) entry.target.classList.add('content-up');
+    console.log(entry);
+    console.log(entry.target);
+  });
+};
+
+const viewOnScroll = document.querySelectorAll('.viewonscroll');
+console.log(viewOnScroll);
+const viewOnScrollObserver = new IntersectionObserver(
+  downCB,
+  viewOnSCrollOptions
+);
+//  vos = viewonscroll
+viewOnScroll.forEach(vos => viewOnScrollObserver.observe(vos));
